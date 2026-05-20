@@ -18,13 +18,12 @@ scripts alone.
 | `fig4b_scratch_wound.{pdf,png}` | Fig. 4B |
 | `fig4c_boyden_chamber.{pdf,png}` | Fig. 4C |
 | `fig4d_olaparib.{pdf,png}` | Fig. 4D |
-| `figS_study_design.{pdf,png}` | Fig. S1 |
+| `figS_study_design.{pdf,png}` | Supplementary Methods Fig. 1 |
 | `figS_per_patient_pvalues.{pdf,png}` | Supplementary Methods Fig. 4 |
-| `followup_comparison.{pdf,png}` | Supplementary Methods Fig. 5 |
 | `ddr_burden_vs_time.{pdf,png}` | Supplementary Methods Fig. 6 |
 | `table1_table1.pdf` | Table 1 |
-| `table1_swimmer.pdf` | Supplementary swimmer plot |
-| `table1_love.pdf` | Supplementary love plot |
+| `table1_swimmer.pdf` | Supplementary Methods Fig. 5 |
+| `table1_love.pdf` | Supplementary Methods Fig. 2 |
 | `table1_output.xlsx` | Table 1 in editable form (for manuscript embed) |
 
 Regenerate any of these by running the matching script under `code/`;
