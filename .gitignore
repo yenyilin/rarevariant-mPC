@@ -1,0 +1,53 @@
+# Large sequencing files — never commit, even by accident
+*.bam
+*.vcf
+*.vcf.gz
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+
+# PHI guard for clinical tables (with deliberate, documented exceptions below)
+clinical*.tsv
+!data/synthetic/clinical_synthetic.tsv
+# De-identified clinical cohort table — deliberately published as an
+# explicit exception to the clinical*.tsv guard (see data/clinical/README.md)
+!data/clinical/clinical.tsv
+
+# Generated analysis outputs
+data/processed/
+results_*.csv
+*.cache/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+
+# Build / env
+.venv/
+venv/
+env/
+*.egg-info/
+build/
+dist/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
