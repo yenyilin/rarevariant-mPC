@@ -9,10 +9,11 @@ The Figure 4 functional panels are **not** here — they live in
 just figure composition.
 
 Every script below now runs end-to-end from data committed to this repo
-(`data/raw/`, `data/clinical/`, `data/synthetic/`, `data/derived/`). The
-controlled-access archive on EGA holds the patient-level VCFs and BAMs that
-*produced* the aggregate matrices in `data/raw/` — none of the scripts here
-need that level.
+  (`data/raw/`, `data/clinical/`, `data/synthetic/`, `data/derived/`). The
+  patient-level VCFs and BAMs that *produced* the aggregate matrices in
+  `data/raw/` are controlled-access and are being deposited to a public 
+  controlled-access repository before manuscript publication (see 
+  `docs/DATA_AVAILABILITY.md`). None of the scripts here need them.
 
 | Script | Manuscript | Inputs |
 |---|---|---|
@@ -25,8 +26,8 @@ need that level.
 | `fig3c_cnv_oncoprint.py` | Fig. 3C — CNV oncoprint, 12 candidate genes across 4 public PCa cohorts | `data/raw/cbioportal/fig3c_cnv_oncoprint.tsv` |
 | `fig3d_cnv_barplot.py` | Fig. 3D — CNV alteration-frequency stacked barplot | `data/raw/cbioportal/fig3d_cnv_frequency.tsv` |
 | `fig3e_overall_survival.py` | Fig. 3E — Kaplan-Meier overall survival (Altered vs Unaltered) | `data/raw/cbioportal/fig3e_overall_survival.tsv` |
-| `figS_per_patient_pvalues.py` | Supplementary Methods Fig.4 — per-patient empirical p-value forest plot (Supp. Methods §4.2.4) | `data/raw/gnsrv_per_gene_per_patient.tsv` (+ DDR panel & FLAGS list from `data/derived/`) |
-| `figS_study_design.py` | Fig. S1 — two-stage discovery-replication schematic | None (pure diagram) |
+| `figS_per_patient_pvalues.py` | Supplementary Methods Fig.4 — per-patient empirical p-value forest plot (Supplementary Methods §4.2.4) | `data/raw/gnsrv_per_gene_per_patient.tsv` (+ DDR panel & FLAGS list from `data/derived/`) |
+| `figS_study_design.py` | Supplementary Methods Fig.1 — two-stage discovery-replication schematic | None (pure diagram) |
 
 ## Usage
 

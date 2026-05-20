@@ -6,7 +6,8 @@ do not contain raw genotypes, VCFs, or BAMs. They are committed to keep
 the oncoplot figures fully reproducible from this repository.
 
 The patient-level germline VCFs and CNV calls that *produced* these
-matrices remain controlled access (see `docs/DATA_AVAILABILITY.md`).
+matrices remain controlled access and will be released to a public 
+controlled-access repository before manuscript publication (see `docs/DATA_AVAILABILITY.md`).
 
 | File | Used by |
 |---|---|
