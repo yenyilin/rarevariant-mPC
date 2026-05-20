@@ -8,7 +8,7 @@ For the full methods text and reported numerical values, see **Supplementary Met
 
 ## Plain-English overview
 
-Prostate cancer patients whose disease later spread to other parts of the body (the metastatic arm, n = 26) carried far more rare germline variants in DNA damage repair (DDR) genes than otherwise-similar patients whose cancer stayed put (the non-metastatic arm, n = 26). The metastatic patients carried, on average, about four times as many DDR variants per person; every single one of them carried at least one, versus only about half of the non-metastatic patients. We tested this in three independent ways — comparing the two arms directly, comparing DDR against 10,000 randomly chosen 25-gene panels, and checking each patient against the random-panel reference one at a time. All three approaches gave the same answer with p-values smaller than five in a million. Crucially, when we ran the same random-panel test on the non-metastatic arm, DDR didn't stand out — meaning the DDR signal isn't just a quirk of DDR genes being unusually large; it's specific to patients whose disease metastasized.
+Prostate cancer patients whose disease later spread to other parts of the body (the metastatic arm, n = 26) carried far more rare germline variants in DNA damage repair (DDR) genes than otherwise-similar patients whose cancer stayed put (the non-metastatic arm, n = 26). The metastatic patients carried, on average, about four times as many DDR variants per person; every single one of them carried at least one, versus only about half of the non-metastatic patients. We tested this in three independent ways: comparing the two arms directly, comparing DDR against 10,000 randomly chosen 25-gene panels, and checking each patient against the random-panel reference one at a time. All three approaches gave the same answer with p-values smaller than five in a million. Crucially, when we ran the same random-panel test on the non-metastatic arm, DDR didn't stand out, meaning the DDR signal isn't just a quirk of DDR genes being unusually large; it's specific to patients whose disease metastasized.
 
 ---
 
@@ -34,6 +34,13 @@ python ddr_arm_compare.py --n-permutations 1000000
 
 # Test 2 — within-arm bootstrap, both arms (~30 s)
 python ddr_burden_bootstrap.py --arm both
+
+# Test 2, synonymous-variant negative control — same bootstrap on the
+# synonymous matrix; expected to be non-significant (specificity check)
+python ddr_burden_bootstrap.py --arm both \
+    --matrix ../../data/raw/synonymous_per_gene_per_patient.tsv \
+    --observed-met    "0,1,0,1,0,0,0,0,3,1,0,1,2,0,1,0,0,1,0,0,2,0,2,0,0,0" \
+    --observed-nonmet "0,1,0,2,1,0,0,0,0,0,0,1,1,0,0,0,0,0,3,0,1,1,0,2,3,1"
 
 # Test 3 — per-patient empirical p + Fisher's combined test
 python ddr_per_patient_test.py

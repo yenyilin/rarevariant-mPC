@@ -9,8 +9,9 @@ would produce in the same 26 patients?
 
 Method
 ------
-- Observed: DDR burden vector across 26 metastatic patients is provided
-  inline (DDR_OBSERVED below). Total burden = sum of that vector = 80.
+- Observed: per-patient DDR burden vectors. Defaults are the non-synonymous
+  gnsRV vectors (DDR_OBSERVED / DDR_OBSERVED_NONMET below); override with
+  --observed-met / --observed-nonmet to test another variant class.
 - Null:    for each iteration, draw 25 random genes from the gene pool
            (excluding the DDR panel), sum their burden across the same
            26 met patients, store the total.
@@ -29,11 +30,14 @@ directly.
 
 Usage
 -----
-    python code/03_ddr_enrichment/ddr_burden_bootstrap.py
+    python code/03_ddr_enrichment/ddr_burden_bootstrap.py --arm both
     python code/03_ddr_enrichment/ddr_burden_bootstrap.py --n-iterations 100000
-    python code/03_ddr_enrichment/ddr_burden_bootstrap.py \\
-        --matrix /path/to/gnsrv_per_gene_per_patient.tsv \\
-        --n-iterations 50000 --seed 7
+
+    # Synonymous-variant negative control (override matrix + observed vectors)
+    python code/03_ddr_enrichment/ddr_burden_bootstrap.py --arm both \\
+        --matrix data/raw/synonymous_per_gene_per_patient.tsv \\
+        --observed-met    "0,1,0,1,0,0,0,0,3,1,0,1,2,0,1,0,0,1,0,0,2,0,2,0,0,0" \\
+        --observed-nonmet "0,1,0,2,1,0,0,0,0,0,0,1,1,0,0,0,0,0,3,0,1,1,0,2,3,1"
 """
 
 import argparse
@@ -44,44 +48,17 @@ import pandas as pd
 
 REPO = Path(__file__).resolve().parents[2]
 
-# Observed DDR gnsRV burden across the 26 metastatic patients
-# (one value per patient, in column order). Sum = 80.
+# Default observed DDR burden vectors — non-synonymous (gnsRV) rare variants,
+# one value per patient in matrix-column order. Override with --observed-met /
+# --observed-nonmet to test another variant class (e.g. the synonymous control).
 DDR_OBSERVED = (
-    2,
-    4,
-    3,
-    5,
-    3,
-    1,
-    5,
-    1,
-    7,
-    1,
-    2,
-    1,
-    3,
-    1,
-    5,
-    1,
-    4,
-    4,
-    3,
-    7,
-    5,
-    3,
-    6,
-    2,
-    1,
-    1,
-)
-DDR_TOTAL_OBSERVED = sum(DDR_OBSERVED)  # 81
-
-# Observed DDR gnsRV burden across the 26 NON-METASTATIC patients (sum = 21).
+    2, 4, 3, 5, 3, 1, 5, 1, 7, 1, 2, 1, 3,
+    1, 5, 1, 4, 4, 3, 7, 5, 3, 6, 2, 1, 1,
+)  # sum = 81, 26 metastatic patients
 DDR_OBSERVED_NONMET = (
     1, 1, 0, 0, 0, 0, 0, 1, 2, 0, 1, 0, 3, 1,
     2, 0, 0, 2, 1, 2, 0, 0, 1, 1, 2, 0,
-)
-DDR_TOTAL_OBSERVED_NONMET = sum(DDR_OBSERVED_NONMET)  # 21
+)  # sum = 21, 26 non-metastatic patients
 
 PANEL_SIZE = 25  # number of genes per random panel (matches DDR panel size)
 N_MET = 26       # first N_MET cols of the matrix  = metastatic arm
@@ -100,6 +77,16 @@ def parse_args() -> argparse.Namespace:
     p.add_argument(
         "--arm", choices=("met", "nonmet", "both"), default="met",
         help="Which arm to test: met (default), nonmet, or both.",
+    )
+    p.add_argument(
+        "--observed-met", type=str, default=None,
+        help="Comma-separated per-patient observed DDR burden for the metastatic "
+             "arm. Default: the non-synonymous gnsRV vector (DDR_OBSERVED).",
+    )
+    p.add_argument(
+        "--observed-nonmet", type=str, default=None,
+        help="Comma-separated per-patient observed DDR burden for the "
+             "non-metastatic arm. Default: the non-synonymous gnsRV vector.",
     )
     p.add_argument(
         "--ddr-panel",
@@ -136,6 +123,20 @@ def parse_args() -> argparse.Namespace:
         help="Optional: write every iteration's sampled gene panel + total to this TSV.",
     )
     return p.parse_args()
+
+
+def parse_observed(spec: str | None, default: tuple[int, ...], label: str) -> tuple[int, ...]:
+    """Resolve an observed-burden vector: parse a comma-separated --observed-*
+    string, or fall back to the default gnsRV vector."""
+    if spec is None:
+        return default
+    vec = tuple(int(x) for x in spec.split(","))
+    if len(vec) != len(default):
+        raise SystemExit(
+            f"--observed-{label} has {len(vec)} values; expected {len(default)} "
+            f"(one per patient in the {label} arm)."
+        )
+    return vec
 
 
 def load_exclude_list(path: Path) -> set[str]:
@@ -246,7 +247,7 @@ def main() -> None:
             f"--arm {args.arm} needs at least {needed_cols}."
         )
 
-    ddr_genes = set(pd.read_csv(args.ddr_panel, sep="\t")["gene"].tolist())
+    ddr_genes = set(pd.read_csv(args.ddr_panel, sep="\t", comment="#")["gene"].tolist())
     flags = set() if args.no_exclude else load_exclude_list(args.exclude_genes)
     excluded = (set() if args.include_ddr_in_pool else ddr_genes) | flags
     pool = [g for g in matrix.index if g not in excluded]
@@ -265,16 +266,18 @@ def main() -> None:
     print(f"Random pool:             {len(pool)} genes")
 
     # ── Per-arm dispatch ─────────────────────────────────────────────────
+    observed_met = parse_observed(args.observed_met, DDR_OBSERVED, "met")
+    observed_nonmet = parse_observed(args.observed_nonmet, DDR_OBSERVED_NONMET, "nonmet")
     arms = ("met", "nonmet") if args.arm == "both" else (args.arm,)
     for arm in arms:
         if arm == "met":
             arm_matrix = matrix.iloc[:, :N_MET]
-            obs_total = DDR_TOTAL_OBSERVED
-            n_obs = len(DDR_OBSERVED)
+            obs_total = sum(observed_met)
+            n_obs = len(observed_met)
         else:  # nonmet
             arm_matrix = matrix.iloc[:, N_MET : N_MET + N_NONMET]
-            obs_total = DDR_TOTAL_OBSERVED_NONMET
-            n_obs = len(DDR_OBSERVED_NONMET)
+            obs_total = sum(observed_nonmet)
+            n_obs = len(observed_nonmet)
 
         # If two arms requested and --save-panels given, suffix the path
         save_path = args.save_panels

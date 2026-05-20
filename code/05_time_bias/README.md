@@ -29,8 +29,8 @@ The `epc_cohort.tsv` file is produced by `code/01_cohort_prep/prepare_epc_cohort
 
 | Script | Output | Manuscript figure |
 |---|---|---|
-| `ddr_followup_plot.py` | `figures/followup_comparison.{pdf,png}` | Supplementary Figure S5 |
-| `ddr_burden_vs_time.py` | `figures/ddr_burden_vs_time.{pdf,png}` | Supplementary Figure S6 |
+| `ddr_followup_plot.py` | `figures/followup_comparison.{pdf,png}` | Supplementary Methods Fig. 5 |
+| `ddr_burden_vs_time.py` | `figures/ddr_burden_vs_time.{pdf,png}` | Supplementary Methods Fig. 6 |
 
 ## Usage
 
@@ -42,3 +42,11 @@ python3 code/05_time_bias/ddr_burden_vs_time.py
 Both scripts print test statistics to stdout and save figures to
 `figures/`.
 
+## Note on file history
+
+These scripts were previously located in `code/08_figures/` under names
+`figS_MX_ddr_followup_plot.py` and `figS_M6_ddr_burden_vs_time.py`.
+They were moved here to match the documented analytic stage 
+ (`code/05_time_bias/`), and it groups the two time-bias analyses by 
+ analytical purpose (time-dependent selection bias) rather than by 
+ output type (figure generation).

@@ -45,5 +45,5 @@ Fig. 3B; Supplementary Methods §4.5).
 The summary results are committed as
 `data/derived/ppcg_gene_associations.tsv` (per-gene endpoint, Wald,
 burden, and SKAT statistics). PPCG cohort access is governed by the
-consortium — see `docs/DATA_AVAILABILITY.md` (Tier 3) and
+consortium — see `docs/DATA_AVAILABILITY.md` (Third-party cohorts) and
 https://panprostate.org/.

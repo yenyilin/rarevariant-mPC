@@ -4,7 +4,7 @@ clinical TSV and a per-patient gnsRV burden TSV.
 
 Default inputs:
   1. Clinical TSV
-       real:      data/raw/clinical/clinical.tsv
+       real:      data/clinical/clinical.tsv
        synthetic: data/synthetic/clinical_synthetic.tsv
   2. Per-patient gnsRV burden TSV
        real:      data/raw/gnsrv_burden_per_patient.tsv
@@ -73,7 +73,6 @@ COLUMN_RENAME = {
     "Metastasis (1=yes, 0=no)":        "metastatic",
     "Ancestry (inferred)":             "ancestry",
     "Age at diagnosis (years)":        "age_at_diagnosis",
-    "Diagnosis year":                  "diagnosis_year",
     "PSA at diagnosis (ng/mL)":        "psa_at_diagnosis",
     "Biopsy total Gleason score":      "biopsy_gleason",
     "Biopsy positive cores":           "biopsy_positive_cores",
@@ -136,7 +135,7 @@ def main() -> None:
     elif args.synthetic:
         clinical_tsv = REPO / "data" / "synthetic" / "clinical_synthetic.tsv"
     else:
-        clinical_tsv = REPO / "data" / "raw" / "clinical" / "clinical.tsv"
+        clinical_tsv = REPO / "data" / "clinical" / "clinical.tsv"
 
     if args.extra is not None:
         extra_tsv = args.extra

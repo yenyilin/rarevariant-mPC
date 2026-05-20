@@ -232,7 +232,7 @@ def main() -> None:
             f"need at least {N_MET + N_NONMET}."
         )
 
-    ddr_genes = set(pd.read_csv(args.ddr_panel, sep="\t")["gene"].tolist())
+    ddr_genes = set(pd.read_csv(args.ddr_panel, sep="\t", comment="#")["gene"].tolist())
     flags = set() if args.no_exclude else load_exclude_list(args.exclude_genes)
     excluded = (set() if args.include_ddr_in_pool else ddr_genes) | flags
     pool = [g for g in matrix.index if g not in excluded]
