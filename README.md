@@ -1,6 +1,6 @@
 # Pathway-Level Germline DDR Rare Variants in Metastatic Prostate Cancer — Analysis Code
 
-[![DOI](https://zenodo.org/badge/1235749000.svg)](https://doi.org/10.5281/zenodo.20317985)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20317985.svg)](https://doi.org/10.5281/zenodo.20317985)
 
 This repository contains the analysis code and de-identified derived data
 supporting the manuscript:
