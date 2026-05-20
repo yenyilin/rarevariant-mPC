@@ -15,8 +15,9 @@ this study targets a distinct phenotype of **metastatic progression after
 diagnosis** using an extreme-phenotype cohort design that sequences
 patients at opposite ends of the post-diagnosis course. The finding is a
 **pathway-level** germline rare-variant burden across DNA Damage Response
-(DDR) genes, *not any single-variant association*, that distinguishes the
-two arms. The pathway-level signal replicates in an independent Australian
+(DDR) genes that distinguishes the two arms, with convergent
+contributions from *multiple DDR genes rather than a single dominant
+variant*. The pathway-level signal replicates in an independent Australian
 extreme-phenotype cohort and at the pathway level in the Pan Prostate
 Cancer Group (n = 976). In vitro functional studies of variants currently
 classified as uncertain or benign in clinical databases reveal measurable

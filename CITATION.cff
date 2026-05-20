@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this code or derived data, please cite both the
+manuscript and this software release."
+title: "Analysis code for: Pathway-Level Germline Rare Variant Enrichment Across
+DNA Damage Response Genes in Metastatic versus Non-Metastatic Prostate Cancer: An Extreme Phenotype Study"
+version: 1.0.0
+date-released: 2026-05-11
+authors:
+  - family-names: Lin
+    given-names: Yen-Yi
+    email: yenyilin@gmail.com
+license: MIT
+repository-code: "https://github.com/yenyilin/rarevariant-mPC"
+preferred-citation:
+  type: article
+  title: "Pathway-Level Germline Rare Variant Enrichment Across
+DNA Damage Response Genes in Metastatic versus Non-Metastatic Prostate Cancer: An Extreme Phenotype Study"
+  authors:
+    - family-names: Lin
+      given-names: Yen-Yi
+  year: 2026
+  journal: "European Urology"
+  notes: "Manuscript under revision."
