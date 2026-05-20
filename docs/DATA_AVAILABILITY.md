@@ -50,8 +50,8 @@ it will be finalized, and the data released to controlled access, before publica
 A static, citable archive of the code in this repository is minted on
 Zenodo for each release:
 
-- **Zenodo concept DOI:** 10.5281/zenodo.<TBD>
-- **Release v1.0 (resubmission snapshot):** 10.5281/zenodo.<TBD>
+- **Zenodo concept DOI:** 10.5281/zenodo.20317985
+- **Release v1.0 (resubmission snapshot):** 10.5281/zenodo.20317985
 
 ## Contact
 

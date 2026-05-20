@@ -1,5 +1,7 @@
 # Pathway-Level Germline DDR Rare Variants in Metastatic Prostate Cancer — Analysis Code
 
+[![DOI](https://zenodo.org/badge/1235749000.svg)](https://doi.org/10.5281/zenodo.20317985)
+
 This repository contains the analysis code and de-identified derived data
 supporting the manuscript:
 
@@ -161,7 +163,7 @@ See `docs/METHODS_CROSSREF.md` for the full table. Examples:
   author = {Lin, Y.-Y. and others},
   year   = {2026},
   note   = {Preprint: doi:10.1101/2025.04.28.25326584;
-            Code and derived data: doi:10.5281/zenodo.<TBD>}
+            Code and derived data: doi:10.5281/zenodo.20317985}
 }
 ```
 
