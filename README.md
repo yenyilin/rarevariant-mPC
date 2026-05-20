@@ -1,4 +1,4 @@
-# Rare Germline Variants in Metastatic Prostate Cancer — Analysis Code
+# Pathway-Level Germline DDR Rare Variants in Metastatic Prostate Cancer — Analysis Code
 
 This repository contains the analysis code and de-identified derived data
 supporting the manuscript:
@@ -11,11 +11,11 @@ supporting the manuscript:
 > *(v1 — an updated preprint matching this submission will be posted to medRxiv on acceptance.)*
 
 Most genetic studies of prostate cancer have addressed *cancer initiation*;
-this study targets a distinct phenotype of *metastatic progression after
-diagnosis* using an extreme-phenotype cohort design that sequences
+this study targets a distinct phenotype of **metastatic progression after
+diagnosis** using an extreme-phenotype cohort design that sequences
 patients at opposite ends of the post-diagnosis course. The finding is a
-*pathway-level* germline rare-variant burden across DNA Damage Response
-(DDR) genes, _not any single-variant association_, that distinguishes the
+**pathway-level** germline rare-variant burden across DNA Damage Response
+(DDR) genes, *not any single-variant association*, that distinguishes the
 two arms. The pathway-level signal replicates in an independent Australian
 extreme-phenotype cohort and at the pathway level in the Pan Prostate
 Cancer Group (n = 976). In vitro functional studies of variants currently
@@ -26,7 +26,9 @@ therapy but are not flagged by current variant-classification criteria.
 A persistent DOI for the code and derived data is minted via Zenodo and
 listed in the manuscript's Data Availability statement.
 
-## What this repository contains
+## Repository contents
+
+### In this repo
 
 - All scripts used to generate the statistical results, tables, and figures
   reported in the manuscript.
@@ -45,28 +47,34 @@ listed in the manuscript's Data Availability statement.
 - A **claim-to-script crossreference** (`docs/METHODS_CROSSREF.md`) that
   maps each numerical result in the manuscript to the file that produces it.
 
-## Scope
-
-This study's methodological contribution is the extreme-phenotype cohort
-(EPC) design and the rare-variant prioritization strategy, not new
-variant-calling or statistical software. Every stage deliberately uses
-standard, widely validated tools (e.g. BWA-MEM, Strelka2, ANNOVAR, Firth
-penalized regression, SKAT) so that the findings do not depend on bespoke,
-unvalidated code and can be reproduced with any equivalent workflow.
-
-## What this repository does **not** contain
+### Not in this repo
 
 Raw FASTQ, BAM, VCF, and raw wet-lab image stacks are **not** in this
 repository. They remained controlled-access and are being deposited to 
 a public controlled-access repository before manuscript publication (see 
   `docs/DATA_AVAILABILITY.md`). The aggregate matrices and quantified 
 readings that the analysis pipeline actually *consumes* are committed 
-under `data/clinical/` and `data/raw/`.
+under `data/clinical/` and `data/raw/`
+
+### A note on tools
+
+Every stage uses standard, widely validated tools  (e.g. BWA-MEM, 
+Strelka2, ANNOVAR, Firth penalized regression, SKAT) so the findings do 
+not depend on bespoke, unvalidated code and can be reproduced with any
+equivalent workflow. The methodological contribution is the extreme-phenotype 
+cohort design and the rare-variant prioritization strategy, not new software.
+
 
 ## Quickstart
 
+Python 3.11 with `pandas`, `numpy`, `scipy`, `matplotlib`, `openpyxl`,
+`marimo` (for `notebooks/`), and `pytest` (for the smoke tests). Exact
+versions are pinned in `environment.yml` / `requirements.txt`. Nothing
+in `code/` requires R: the PPCG gene-level SKAT tests are run by the
+PPCG consortium, not from this repo.
+
 ```bash
-git clone https://github.com/<org>/rarevariant-mPC.git
+git clone https://github.com/yenyilin/rarevariant-mPC.git
 cd rarevariant-mPC
 
 # Option A — conda (canonical, matches environment.yml exactly)
@@ -95,13 +103,24 @@ python code/04_firth_regression/ddr_logistic_regression.py
 pytest
 
 # 5. Open an interactive walkthrough (marimo)
-marimo edit notebooks/01_firth_walkthrough.py
+marimo edit notebooks/01_ddr_convergent_walkthrough.py
 ```
 
 To reproduce the published numerical results, just re-run steps 2 onward
 without the `--synthetic` flag — the real cohort tables are already
 committed under `data/clinical/` and `data/raw/`. See
 `docs/REPRODUCIBILITY.md` for the full command list.
+
+## Reproducing specific manuscript claims
+
+See `docs/METHODS_CROSSREF.md` for the full table. Examples:
+
+| Manuscript claim | Script |
+|---|---|
+| DDR gnsRV enrichment, p = 4.57 × 10⁻⁶ | `code/03_ddr_enrichment/ddr_arm_compare.py` |
+| Firth OR = 26.80, 95% CI 3.07–3528.42 | `code/04_firth_regression/ddr_logistic_regression.py` |
+| Mann-Whitney follow-up comparison, p < 0.001 | `code/05_time_bias/ddr_followup_plot.py` |
+| Australian EPC binomial, p = 0.027–0.050 | `code/06_replication/australian_binomial.py` |
 
 ## Repository layout
 
@@ -110,7 +129,7 @@ committed under `data/clinical/` and `data/raw/`. See
 ├── code/
 │   ├── 01_cohort_prep/        Build analysis table from clinical + genotype inputs
 │   ├── 02_variant_calling/    BWA / Strelka2 / annotation pipeline (documented)
-│   ├── 03_ddr_enrichment/     Wilcoxon bootstrap of DDR gnsRV burden
+│   ├── 03_ddr_enrichment/     DDR pathway-burden tests (Mann-Whitney, gene-set bootstrap, per-patient p)
 │   ├── 04_firth_regression/   Firth penalized logistic regression (OR=26.80)
 │   ├── 05_time_bias/          Mann-Whitney + Spearman time-bias analyses
 │   ├── 06_replication/        Australian EPC binomial (PPCG SKAT done by consortium)
@@ -130,28 +149,6 @@ committed under `data/clinical/` and `data/raw/`. See
 ├── tests/                     Sanity checks runnable on synthetic data
 └── .github/workflows/         CI (pytest on synthetic data)
 ```
-
-## Reproducing specific manuscript claims
-
-See `docs/METHODS_CROSSREF.md` for the full table. Examples:
-
-| Manuscript claim | Script |
-|---|---|
-| DDR gnsRV enrichment, p = 4.57 × 10⁻⁶ | `code/03_ddr_enrichment/ddr_arm_compare.py` |
-| Firth OR = 26.80, 95% CI 3.07–3528.42 | `code/04_firth_regression/ddr_logistic_regression.py` |
-| Mann-Whitney follow-up comparison, p < 0.001 | `code/05_time_bias/ddr_followup_plot.py` |
-| Australian EPC binomial, p = 0.027–0.050 | `code/06_replication/australian_binomial.py` |
-
-## Software environment
-
-- Python 3.11
-- pandas, numpy, scipy, matplotlib, openpyxl
-- marimo (for the interactive `notebooks/`)
-- pytest (for the smoke tests)
-
-Exact versions are pinned in `environment.yml`. Nothing in `code/` requires R
-or Rscript — the PPCG gene-level SKAT tests are run by the PPCG consortium
-side, not from this repo.
 
 ## Citation
 
