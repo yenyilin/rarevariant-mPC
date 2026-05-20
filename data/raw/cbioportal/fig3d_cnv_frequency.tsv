@@ -1,0 +1,10 @@
+Cancer Study	Alteration Frequency	Alteration Type	Alteration Count
+Metastatic Prostate Adenocarcinoma (SU2C/PCF Dream Team, PNAS 2019)	12.587412587412588	homdel	54
+Metastatic Prostate Adenocarcinoma (SU2C/PCF Dream Team, PNAS 2019)	42.65734265734265	amp	183
+Metastatic Prostate Cancer (SU2C/PCF Dream Team, Cell 2015)	6.666666666666667	homdel	10
+Metastatic Prostate Cancer (SU2C/PCF Dream Team, Cell 2015)	31.333333333333336	amp	47
+Prostate Adenocarcinoma (TCGA, PanCancer Atlas)	13.765182186234817	homdel	68
+Prostate Adenocarcinoma (TCGA, PanCancer Atlas)	11.94331983805668	amp	59
+Prostate Adenocarcinoma (TCGA, PanCancer Atlas)	0.20242914979757085	structuralVariant	1
+Prostate Adenocarcinoma (MSK, Cancer Cell 2010)	7.317073170731707	homdel	15
+Prostate Adenocarcinoma (MSK, Cancer Cell 2010)	6.829268292682928	amp	14

@@ -1,0 +1,27 @@
+# Australian EPC carrier counts — input data for the §4.6 binomial test
+# (consumed by code/06_replication/australian_binomial.py)
+#
+# Each row reports observed carriers (k) of >=1 of the candidate gnsRVs
+# (per the rare-variant inclusion criterion in gnsrv_56_screen.tsv) out of
+# n total patients in the named phenotype subgroup. Phenotype subgroups
+# are nested cumulative (each row's denominator includes patients with
+# progressively broader disease classifications).
+#
+# COLUMN DEFINITIONS
+#   subgroup            : phenotype subgroup label
+#   n                   : total patients in subgroup
+#   observed_carriers   : number of patients carrying >=1 of the 44 gnsRVs
+#
+# This file contains INPUTS only. Expected carrier counts and one-sided
+# binomial p-values are computed by australian_binomial.py from this
+# table plus the p_carrier value derived from gnsrv_56_screen.tsv;
+# they are not stored here to avoid drift between source data and
+# derived values.
+#
+# To reproduce the published §4.6 binomial test results, run:
+#   python3 code/06_replication/australian_binomial.py
+subgroup	n	observed_carriers
+metastatic_bone_visceral	17	9
+metastatic_plus_BCR	29	14
+metastatic_plus_BCR_plus_nodes	33	16
+non_metastatic_control	14	5

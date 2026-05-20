@@ -1,0 +1,9 @@
+gene	tier	clinical_endpoint	wald_p	burden_p	skat_aggregate_p
+FOCAD	exclusive_metastatic	age_at_RP	NA	NA	0.03
+CHEK2	DDR_panel	age_at_RP	1.0e-06	NA	0.03
+SIVA1	exclusive_metastatic	PSA_at_RP	NA	NA	0.03
+ACSF3	exclusive_metastatic	PSA_at_RP	NA	NA	0.03
+HPGDS	exclusive_metastatic	PSA_at_RP	NA	NA	0.03
+SPATA9	exclusive_metastatic	metastatic_disease	NA	NA	0.03
+ZSWIM4	exclusive_metastatic	high_risk_classification	NA	NA	0.03
+DNAJC10	exclusive_metastatic	high_risk_classification	NA	NA	0.03

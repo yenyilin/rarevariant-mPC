@@ -1,0 +1,172 @@
+# DDR gene panel — 25 genes evaluated in the prespecified DDR pathway analysis
+# (Methods §2.2; Results; Fig. 1).
+#
+# COLUMN DEFINITIONS
+#   gene              : HGNC-approved gene symbol
+#   in_pritchard_2016 : TRUE if the gene is among the 20 DDR genes profiled in
+#                       Pritchard et al. NEJM 2016 (Inherited DNA-Repair Gene
+#                       Mutations in Men with Metastatic Prostate Cancer);
+#                       FALSE otherwise. Provides traceability to the
+#                       prostate-cancer-specific DDR panel that motivated this
+#                       study's gene selection.
+#   in_broca          : TRUE if the gene is in the University of Washington
+#                       BROCA hereditary cancer-risk panel (Walsh et al. 2010;
+#                       ongoing updates); FALSE otherwise. BROCA is the
+#                       clinical cancer-susceptibility panel used for germline
+#                       testing across hereditary cancer syndromes.
+#   pathway_core      : DDR pathway membership under Knijnenburg et al. 2018
+#                       (Cell Reports) core-pathway taxonomy. Categories:
+#                       BER, NER, MMR, FA, HR, NHEJ, DR (Direct Repair),
+#                       TLS (Translesion Synthesis), DamageSensor.
+#                       "DDR-modulator" = gene not in Knijnenburg's panel but
+#                       with literature-supported DDR-regulatory role; the
+#                       affected pathway (where specific) is noted in parens.
+#                       "NA" = not annotated in Knijnenburg or core pathway
+#                       not assigned.
+#   pathway_broad     : Knijnenburg's broader multi-pathway annotation
+#                       (slash-delimited). Categories: BER, NER, MMR, FA,
+#                       HDR (Homology-dependent Recombination), NHEJ, DR, TLS,
+#                       NP (Nucleotide pools), Others.
+#   source            : Knijnenburg 2018 for genes in the 276-gene annotated set;
+#                       explicit secondary citation for the 6 genes not in
+#                       Knijnenburg's panel (DDX11, FMN2, MET, MYC, TEX15, TRAIP).
+#
+# REFERENCES
+#   Pritchard CC et al. "Inherited DNA-Repair Gene Mutations in Men with Metastatic
+#     Prostate Cancer." N Engl J Med 2016; 375:443-453.
+#     The 20-gene Pritchard panel: ATM, ATR, BARD1, BRCA1, BRCA2, BRIP1, CHEK1,
+#     CHEK2, FAM175A, FANCA, GEN1, MLH1, MRE11A, MSH2, MSH6, NBN, PALB2, PMS2,
+#     RAD51C, RAD51D.
+#   Walsh T et al. "Detection of inherited mutations for breast and ovarian
+#     cancer using genomic capture and massively parallel sequencing."
+#     PNAS 107, 12629-12633 (2010).
+#     BROCA Cancer Risk Panel (University of Washington; ongoing updates):
+#     67-gene hereditary cancer susceptibility clinical panel.
+#   Knijnenburg TA et al. "Genomic and Molecular Landscape of DNA Damage Repair
+#     Deficiency across The Cancer Genome Atlas." Cell Reports 23, 239-254 (2018).
+#     Supplementary Table S1 lists 276 DDR genes with pathway annotations.
+#   MET literature: Medova M, Aebersold DM, Zimmer Y. "MET inhibition in tumor
+#     cells by PHA665752 impairs homologous recombination repair of DNA double
+#     strand breaks." Int J Cancer 130, 728-734 (2012). Medova M et al. "The
+#     Molecular Crosstalk between the MET Receptor Tyrosine Kinase and the
+#     DNA Damage Response." Cancers 6, 1-27 (2014) [review].
+#   MYC literature: Luoto KR et al. "Tumor cell kill by c-MYC depletion: role
+#     of MYC-regulated genes that control DNA double-strand break repair."
+#     Cancer Res 70, 8748-8759 (2010). Giuntini F, Whitfield JR, Masso-Valles D,
+#     Soucek L. "The leading role of MYC in DNA damage response." Front Cell
+#     Dev Biol 13, 1726515 (2026) [review].
+#   FMN2 literature: Belin BJ, Lee T, Mullins RD. "DNA damage induces nuclear
+#     actin filament assembly by Formin-2 and Spire-1/2 that promotes efficient
+#     DNA repair." eLife 4:e07735 (2015). Originally identified as an ATM/ATR
+#     phosphorylation substrate in Matsuoka S et al. "ATM and ATR substrate
+#     analysis reveals extensive protein networks responsive to DNA damage."
+#     Science 316, 1160-1166 (2007).
+#   TEX15 literature: Yang F, Eckardt S, Leu NA, McLaughlin KJ, Wang PJ.
+#     "Mouse TEX15 is essential for DNA double-strand break repair and
+#     chromosomal synapsis during male meiosis." J Cell Biol 180, 673-679 (2008).
+#     Schopp T et al. "TEX15 is an essential executor of MIWI2-directed
+#     transposon DNA methylation and silencing." Nat Commun 11, 3739 (2020).
+#     Both functions are germ-cell-specific; TEX15 inclusion in a somatic-cell
+#     DDR panel relies on the assumption that meiotic DSB-repair mechanisms
+#     (RAD51 loading) extrapolate to somatic contexts.
+#   POLG literature: Park J, Herrmann GK, Mitchell PG, Sherman MB, Yin YW.
+#     "Polgamma coordinates DNA synthesis and proofreading to ensure
+#     mitochondrial genome integrity." Nat Struct Mol Biol 30, 812-823 (2023).
+#     Longley MJ, Nguyen D, Kunkel TA, Copeland WC. "The fidelity of human
+#     DNA polymerase gamma with and without exonucleolytic proofreading and
+#     the p55 accessory subunit." J Biol Chem 276, 38555-38562 (2001).
+#     POLG performs replication-coupled proofreading (3'->5' exonuclease) in
+#     mtDNA replication and is annotated by Knijnenburg as the mitochondrial
+#     BER polymerase. Both activities are restricted to the mitochondrial
+#     compartment, distinct from nuclear DDR pathways.
+#   RIF1 literature: Chapman JR, Barral P, Vannier JB, Borel V, Steger M,
+#     Tomas-Loba A, Sartori AA, Adams IR, Batista FD, Boulton SJ. "RIF1 is
+#     essential for 53BP1-dependent nonhomologous end joining and suppression
+#     of DNA double-strand break resection." Mol Cell 49, 858-871 (2013).
+#     Escribano-Diaz C, Orthwein A, Fradet-Turcotte A, et al. "A cell
+#     cycle-dependent regulatory circuit composed of 53BP1-RIF1 and
+#     BRCA1-CtIP controls DNA repair pathway choice." (2013). Gupta R,
+#     Somyajit K, Narita T, et al. "DNA Repair Network Analysis Reveals
+#     Shieldin as a Key Regulator of NHEJ and PARP Inhibitor Sensitivity."
+#     Cell 173, 972-988 (2018). RIF1 is the proximal 53BP1 effector in NHEJ;
+#     53BP1-RIF1 antagonizes BRCA1-CtIP-mediated end resection and recruits
+#     Shieldin to DSBs.
+#   WRN literature: Chan EM, Shibue T, McFarland JM, et al. "WRN helicase is
+#     a synthetic lethal target in microsatellite unstable cancers." Nature
+#     568, 551-556 (2019). doi:10.1038/s41586-019-1102-x. Behan FM, Iorio F,
+#     Picco G, et al. "Prioritization of cancer therapeutic targets using
+#     CRISPR-Cas9 screens." Nature 568, 511-516 (2019) [companion paper].
+#     WRN is a RecQ DNA helicase; depletion induces DSB accumulation
+#     selectively in MSI (MMR-deficient) cancers. WRN resolves D-loops and
+#     insertion-deletion loops; has documented roles in HR, NHEJ, and
+#     replication-fork stability. WRN deficiency causes Werner syndrome
+#     (premature aging, cancer predisposition).
+#
+# PANEL COMPOSITION SUMMARY
+#   Cross-reference of the 25 panel genes against three external panels:
+#     - Pritchard 2016 (PCa-specific DDR mutation panel): 10/25 overlap
+#         (ATM, ATR, BRCA1, BRCA2, BRIP1, CHEK2, MSH2, NBN, PALB2, RAD51C)
+#     - BROCA (clinical hereditary cancer-risk panel): 13/25 overlap
+#         (ATM, ATR, BRCA1, BRCA2, BRIP1, CHEK2, MET, MSH2, MSH3, NBN, PALB2,
+#          RAD51C, TP53)
+#     - Knijnenburg 2018 (pan-cancer DDR taxonomy): 19/25 in the 276-gene
+#       annotated set; 6 are not (DDX11, FMN2, MET, MYC, TEX15, TRAIP) and
+#       are annotated from secondary literature where available.
+#   Genes supported by secondary primary literature (not in canonical panels,
+#   or in Knijnenburg "Others" only):
+#     - DDX11 (Pisani et al. 2018) — Warsaw breakage syndrome / FA-like
+#     - FMN2  (Belin et al. 2015 eLife) — nuclear actin / DSB repair;
+#             ATM/ATR substrate per Matsuoka et al. 2007
+#     - MET   (Medova et al. 2012; Ganapathipillai 2008) — HR impairment
+#     - MYC   (Luoto et al. 2010; Vafa et al. 2002) — DSB repair gene control
+#     - POLG  (Park et al. 2023 Nat Struct Mol Biol; Longley et al. 2001
+#             J Biol Chem) — mitochondrial DNA polymerase; replication-coupled
+#             proofreading (3'->5' exonuclease) and Knijnenburg-annotated
+#             mitochondrial BER. Mitochondrial-compartment-restricted, distinct
+#             from nuclear DDR pathways.
+#     - RIF1  (Chapman et al. 2013 Mol Cell; Escribano-Diaz et al. 2013;
+#             Gupta et al. 2018 Cell) — proximal 53BP1 effector in NHEJ;
+#             antagonizes BRCA1-CtIP-mediated end resection; recruits Shieldin
+#             to DSBs. Clinically relevant to PARP-inhibitor sensitivity in
+#             BRCA1-deficient contexts. Knijnenburg annotates as NHEJ in broad
+#             scheme.
+#     - TEX15 (Yang et al. 2008 J Cell Biol; Schopp et al. 2020 Nat Commun) —
+#             meiotic DSB repair / RAD51 loading; germ-cell-specific function
+#             (somatic role is an extrapolation).
+#     - TRAIP (Hoffmann et al. 2016 Mol Cell) — FA pathway-adjacent
+#     - WRN   (Chan et al. 2019 Nature; Behan et al. 2019 Nature [companion]) —
+#             RecQ helicase; depletion induces DSB accumulation; synthetic
+#             lethal in MSI (MMR-deficient) cancers; roles in HR, NHEJ, and
+#             replication-fork stability. Knijnenburg annotates as BER/HDR
+#             in broad scheme.
+#
+#   Notes:
+#   - DamageSensor (ATM, ATR, CHEK2) in Knijnenburg's core taxonomy corresponds
+#     to what is sometimes labeled "checkpoint" or "HR/checkpoint" in other
+#     classifications.
+gene	in_pritchard_2016	in_broca	pathway_core	pathway_broad	source
+ATM	TRUE	TRUE	DamageSensor	Others	Knijnenburg 2018
+ATR	TRUE	TRUE	DamageSensor	Others	Knijnenburg 2018
+BRCA1	TRUE	TRUE	HR	FA/HDR	Knijnenburg 2018
+BRCA2	TRUE	TRUE	HR	FA/HDR	Knijnenburg 2018
+BRIP1	TRUE	TRUE	HR	FA/HDR	Knijnenburg 2018
+CHEK2	TRUE	TRUE	DamageSensor	Others	Knijnenburg 2018
+DDX11	FALSE	FALSE	FA	FA	Pisani et al. 2018 (Genes); Warsaw breakage syndrome / FA-like phenotype
+EXO1	FALSE	FALSE	MMR	MMR/HDR	Knijnenburg 2018
+FANCD2	FALSE	FALSE	FA	FA	Knijnenburg 2018
+FMN2	FALSE	FALSE	DDR-modulator	Nuclear actin/DDR-response	Belin et al. 2015 (eLife); FMN2 nucleates nuclear actin filaments in response to DNA damage; depletion increases DSB foci. Originally identified as ATM/ATR substrate in Matsuoka et al. 2007 (Science).
+MET	FALSE	TRUE	DDR-modulator (HR)	HDR	Medova et al. 2012 (Int J Cancer); MET inhibition impairs HR repair of DSBs. Ganapathipillai et al. 2008 (Cancer Res); MET-RAD51 coupling via Abl. Reviewed in Medova et al. 2014 (Cancers).
+MSH2	TRUE	TRUE	MMR	MMR	Knijnenburg 2018
+MSH3	FALSE	TRUE	MMR	MMR	Knijnenburg 2018
+MYC	FALSE	FALSE	DDR-modulator	HDR/Replication	Luoto et al. 2010 (Cancer Res); MYC-regulated genes control DSB repair. Vafa et al. 2002 (Mol Cell); MYC induces DNA damage and genomic instability. Reviewed in Giuntini et al. 2026 (Front Cell Dev Biol).
+NBN	TRUE	TRUE	HR	HDR/NHEJ	Knijnenburg 2018
+PALB2	TRUE	TRUE	HR	FA/HDR	Knijnenburg 2018
+POLB	FALSE	FALSE	BER	BER/NHEJ/TLS	Knijnenburg 2018
+POLG	FALSE	FALSE	Mitochondrial DNA repair	Others (mtDNA)	Knijnenburg 2018 (annotated as "BER in mitochondria DNA"). Park et al. 2023 (Nat Struct Mol Biol); POLgamma coordinates DNA synthesis and proofreading to ensure mitochondrial genome integrity. Longley et al. 2001 (J Biol Chem); POLgamma fidelity and exonucleolytic proofreading.
+RAD51C	TRUE	TRUE	NA	FA/HDR	Knijnenburg 2018
+RIF1	FALSE	FALSE	NHEJ	NHEJ/Others	Knijnenburg 2018 (NHEJ in broad scheme). Chapman et al. 2013 (Mol Cell); RIF1 essential for 53BP1-dependent NHEJ and suppression of DSB end resection. Escribano-Diaz et al. 2013; 53BP1-RIF1 vs BRCA1-CtIP cell-cycle circuit controls DSB repair pathway choice. Reviewed in Gupta et al. 2018 (Cell); RIF1 is the proximal 53BP1 effector recruiting Shieldin for NHEJ.
+TEX15	FALSE	FALSE	DDR-modulator (meiotic HR)	HDR (meiotic)	Yang et al. 2008 (J Cell Biol); TEX15 essential for meiotic DSB repair and RAD51/DMC1 loading. Schopp et al. 2020 (Nat Commun); TEX15 essential for piRNA-directed transposon silencing. CAVEAT: both functions are germ-cell-specific; somatic DDR role is an extrapolation.
+TP53	FALSE	TRUE	NA	Others	Knijnenburg 2018
+TP53BP1	FALSE	FALSE	HR	HDR/NHEJ	Knijnenburg 2018
+TRAIP	FALSE	FALSE	FA	FA	Hoffmann et al. 2016 (Mol Cell); FA pathway-adjacent replication-fork ubiquitin ligase
+WRN	FALSE	FALSE	HR/replication-fork	BER/HDR	Knijnenburg 2018. Chan et al. 2019 (Nature); WRN is a RecQ helicase whose depletion induces DSBs and is synthetic lethal in MSI cancers (MMR-deficient cells); WRN resolves D-loops and insertion-deletion loops. Behan et al. 2019 (Nature; companion study); independent CRISPR identification of WRN as MSI cancer dependency. WRN also has documented roles in NHEJ and HR.
