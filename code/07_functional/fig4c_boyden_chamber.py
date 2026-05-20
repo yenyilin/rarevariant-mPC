@@ -414,10 +414,10 @@ fig.suptitle(
     y=1.01,
 )
 plt.tight_layout()
-plt.savefig(FIGURES_DIR / "fig4c_boyden_chamber.pdf", dpi=300, bbox_inches="tight")
-plt.savefig(FIGURES_DIR / "fig4c_boyden_chamber.png", dpi=300, bbox_inches="tight")
-print(f"\nSaved: {FIGURES_DIR / 'fig4c_boyden_chamber.pdf'}")
-print(f"Saved: {FIGURES_DIR / 'fig4c_boyden_chamber.png'}")
+plt.savefig(FIGURES_DIR / "fig4c_boyden_chamber_alt.pdf", dpi=300, bbox_inches="tight")
+plt.savefig(FIGURES_DIR / "fig4c_boyden_chamber_alt.png", dpi=300, bbox_inches="tight")
+print(f"\nSaved: {FIGURES_DIR / 'fig4c_boyden_chamber_alt.pdf'}")
+print(f"Saved: {FIGURES_DIR / 'fig4c_boyden_chamber_alt.png'}")
 
 # ══════════════════════════════════════════════════════════════════════════════
 # PLOT B — Style 2 editorial (terracotta · teal · indigo)
@@ -506,11 +506,7 @@ fig2.suptitle(
     y=1.01,
 )
 plt.tight_layout(pad=1.1)
-plt.savefig(
-    FIGURES_DIR / "fig4c_boyden_chamber_style2.pdf", dpi=300, bbox_inches="tight"
-)
-plt.savefig(
-    FIGURES_DIR / "fig4c_boyden_chamber_style2.png", dpi=300, bbox_inches="tight"
-)
-print(f"Saved: {FIGURES_DIR / 'fig4c_boyden_chamber_style2.pdf'}")
-print(f"Saved: {FIGURES_DIR / 'fig4c_boyden_chamber_style2.png'}")
+plt.savefig(FIGURES_DIR / "fig4c_boyden_chamber.pdf", dpi=300, bbox_inches="tight")
+plt.savefig(FIGURES_DIR / "fig4c_boyden_chamber.png", dpi=300, bbox_inches="tight")
+print(f"Saved: {FIGURES_DIR / 'fig4c_boyden_chamber.pdf'}")
+print(f"Saved: {FIGURES_DIR / 'fig4c_boyden_chamber.png'}")
